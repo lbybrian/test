@@ -1,0 +1,9 @@
+.center_vertical_bar{
+	position: absolute;
+	left: 50%;
+	font-size: 50px;
+	top: 53px;
+}
+.time_line_control_btn{
+	display: inline-block;
+}

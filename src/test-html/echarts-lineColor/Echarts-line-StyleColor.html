@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小(宽高)的Dom -->
+        <div id="main" class="col-md-12  col-sm-12 col-xs-12" style="height: 400px;"></div>
+        <script>
+//      	var test = [
+//  ["2000-06-05", 116],
+//  ["2000-06-06", 129],
+//  ["2000-06-07", 135],
+//  ["2000-06-08", 86],
+//  ["2000-06-09", 73],
+//  ["2000-06-10", 85],
+//  ["2003-11-29", 159],
+//  ["2003-11-30", 147],
+//  ["2003-12-01", 153],
+//  ["2003-12-02", 135],
+//  ["2003-12-03", 99],
+//  ["2003-12-04", 92],
+//  ["2003-12-05", 109],
+//  ["2003-12-06", 99], 
+//  ["2003-12-07", 300],
+//  ["2003-12-08", 330],
+//  ["2003-12-09", 33],
+//  ["2003-12-10", 32],
+//  ["2003-12-11", 31],
+//  ["2015-02-24", 207]
+//];
+
+            $.get('test.json', function (data) {
+                var myChart = echarts.init(document.getElementById("main"));
+                myChart.setOption(option = {
+                    title: {
+                        text: 'Beijing AQI'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    xAxis: {
+                        data: data.map(function (item) {
+                            return item[0];
+                        })
+                    },
+                    yAxis: {
+                        splitLine: {
+                            show: false
+                        }
+                    },
+                    toolbox: {
+                        left: 'center',
+                        feature: {
+                            dataZoom: {
+                                yAxisIndex: 'none'
+                            },
+                            restore: {},
+                            saveAsImage: {}
+                        }
+                    },
+                    dataZoom: [{
+                        startValue: '2014-06-01'
+                    }, {
+                        type: 'inside'
+                    }],
+                    visualMap: {
+                        top: 10,
+                        right: 10,
+                        pieces: [{
+                            gt: 0,
+                            lte: 50,
+//                          color: '#096'
+                            color: 'red'
+                        }, {
+                            gt: 50,
+                            lte: 100,
+//                          color: '#ffde33'
+                            color: 'orange'
+                        }, {
+                            gt: 100,
+                            lte: 150,
+//                          color: '#ff9933'
+                            color: 'yellow'
+                        }, {
+                            gt: 150,
+                            lte: 200,
+//                          color: '#cc0033'
+                            color: 'green'
+                        }, {
+                            gt: 200,
+                            lte: 300,
+//                          color: '#660099'
+                            color: 'blue'
+                        }, {
+                            gt: 300,
+//                          color: '#7e0023'
+                            color: '#7e0023'
+                        }],
+                        outOfRange: {
+                            color: '#999'
+                        }
+                    },
+                    series: {
+                        name: 'Beijing AQI',
+                        type: 'line',
+                        data: data.map(function (item) {
+                            return item[1];
+                        }),
+                        markLine: {
+                            silent: true,
+                            data: [{
+                                yAxis: 50
+                            }, {
+                                yAxis: 100
+                            }, {
+                                yAxis: 150
+                            }, {
+                                yAxis: 200
+                            }, {
+                                yAxis: 300
+                            }]
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

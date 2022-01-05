@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+
+    }
+    .chen {
+        width: 200px;
+        height: 200px;
+        background-color: chartreuse;
+        margin-top: 100px;
+    }
+</style>
+<body>
+    <div class="first">文字</div>
+    <script>
+        //element.style 适合样式少的情况用
+        //element.className 适合样式多的时候用
+        var div = document.querySelector('div');
+        div.onclick = function() {
+            // div.className = 'chen';
+            // this.className = 'chen';
+            //保留原先类
+            this.className  = 'first chen';
+        }
+    </script>
+</body>
+</html>

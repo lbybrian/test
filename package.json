@@ -1,0 +1,63 @@
+{
+  "name": "test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "core-js": "^3.16.0",
+    "echarts": "^5.1.2",
+    "echarts-gl": "^2.0.7",
+    "element-ui": "^2.15.3",
+    "esri-leaflet": "^3.0.2",
+    "jquery": "^3.6.0",
+    "leaflet": "^1.7.1",
+    "leaflet-velocity": "^1.9.2",
+    "node-sass": "^6.0.1",
+    "npm-check-updates": "^11.8.3",
+    "ol": "^6.6.1",
+    "vis": "^4.21.0",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.2",
+    "vuex": "^3.6.2",
+    "xdate": "^0.8.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-router": "~4.5.13",
+    "@vue/cli-plugin-vuex": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
+    "babel-eslint": "^10.1.0",
+    "eslint-plugin-vue": "^7.15.0",
+    "sass-loader": "^6.0.0",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "checkLoops": false
+    },
+    "rules": {
+      "no-unused-vars": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

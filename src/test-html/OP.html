@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>
+			添加电子地图控件
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<!-- 加载OpenLayers 类库 -->
+		<script type="text/javascript" src="http://www.openlayers.cn/olapi/OpenLayers.js">
+		</script>
+		<style>
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+
+		<script type="text/javascript">
+			function init() {
+
+				//创建Control对象填充Controls数组
+				var navigation_control = new OpenLayers.Control.Navigation({});
+				var controls_array = [ //控件数组
+					navigation_control,
+					new OpenLayers.Control.PanZoomBar({}),
+					new OpenLayers.Control.LayerSwitcher({}),
+					new OpenLayers.Control.Permalink(),
+					new OpenLayers.Control.MousePosition({})
+				];
+				var map = new OpenLayers.Map('test_map', {
+					controls: controls_array
+				});
+
+				var wms_layer = new OpenLayers.Layer.WMS(
+					'WMS Layer Title',
+					'http://vmap0.tiles.osgeo.org/wms/vmap0', {
+						layers: 'basic'
+					}, {}
+				);
+
+				map.addLayer(wms_layer);
+			}
+		</script>
+	</head>
+
+	<body onload="init()">
+		<div id="test_map" style="width: 100%;
+height: 100%;">
+		</div>
+	</body>
+
+</html>

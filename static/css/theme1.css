@@ -1,0 +1,19 @@
+body{
+	height: 100%;
+	color: #000!important;
+	background-color: #fff!important;
+}
+#app {
+		color: #000!important;
+		
+	}
+.box-body{
+	width: 200px;
+	height: 300px;
+	color: #fff;
+	background-color: #373b37!important;
+}
+
+div{
+	background-color: #000;
+}

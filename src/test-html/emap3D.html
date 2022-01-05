@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-gl.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="mp" style="height: 700px;width: 100%;margin:0px;padding: 0px;"></div>
+<script>
+    var dt = [
+        {name:'芙蓉区', value: 1,height:2.5},
+        {name:'岳麓区', value: 2,height:3.5},
+        {name:'开福区', value: 3,height:4.5},
+        {name:'天心区', value: 4,height:1.5},
+        {name:'雨花区', value: 5,height:5.5},
+        {name:'望城区', value: 6,height:3.5},
+        {name:'长沙县', value: 7,height:2.5},
+        {name:'宁乡县', value: 8,height:4.5},
+        {name:'浏阳市', value: 9,height:5.5}
+    ];
+    var option = {
+       // backgroundColor: "#333",
+        geo3D:[{
+            show:true,
+            type:'map',
+            map:'cs',
+            symbolSize: 1300,
+//            environment: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+//                offset: 0, color: '#00aaff' // 天空颜色
+//            }, {
+//                offset: 0.7, color: '#998866' // 地面颜色
+//            }, {
+//                offset: 1, color: '#998866' // 地面颜色
+//            }], false),
+            environment:'../images/shine.jpg',
+            groundPlane: {
+                show: false,
+                color: "#0080FF"
+            },
+            shading: 'realistic',
+          //  backgroundColor:'red',
+ 
+ 
+ 
+            itemStyle: {
+                areaColor: '#fff',
+                opacity:1,
+                borderColor: "rgba(100,149,237,1)",
+                borderWidth: 2
+            },
+            label: {
+                show:true,
+                textStyle: {
+                    color: '#ff0000'
+                }
+            },
+            emphasis:{
+                label:{
+                    show:true,
+                    distance: 2
+                    //formatter: '{b}'
+                },
+                itemStyle:{
+                    color:'#EF7E10',
+                    opacity:1
+                }
+            },
+            instancing: false,
+            width: "100%",
+            height: "100%",
+            boxWidth: 160,
+            boxHeight: 2,
+            regions: dt
+        }],
+        series:[{
+            bevelSmoothness: 50,
+            type: "bar3D",
+            coordinateSystem: "geo3D",
+            backgroundcolor:'blcak',
+            data:[{
+                name:'芙蓉区',value:[112.988094,28.193106,2.5],itemStyle: {
+                    color: "#dd6b66"
+                }},
+                {name:'岳麓区',value:[112.911591,28.213044,2.5],itemStyle: {
+                    color: "#759aa0"
+                }},
+                {name:'开福区',value:[112.985525,28.201336,2.5],itemStyle: {
+                    color: "#e69d87"
+                }},
+                {name:'天心区',value:[112.97307,28.192375,2.5],itemStyle: {
+                    color: "#8dc1a9"
+                }},
+                {name:'雨花区',value:[113.016337,28.109937,2.5],itemStyle: {
+                    color: "#ea7e53"
+                }},
+                {name:'望城区',value:[112.819549,28.347458,2.5],itemStyle: {
+                    color: "#eedd78"
+                }},
+                {name:'长沙县',value:[113.080098,28.237888,2.5],itemStyle: {
+                    color: "#73a373"
+                }},
+                {name:'宁乡县',value:[112.553182,28.253928,2.5],itemStyle: {
+                    color: "#73b9bc"
+                }},
+                {name:'浏阳市',value:[113.633301,28.141112,2.5],itemStyle: {
+                    color: "#7289ab"
+                }
+                }],
+            maxHeight: 20,
+            minHeight:0,
+            barSize: 4
+ 
+        }]
+    };
+    $.get('../assets/datas/map.geojson', function (chinaJson) {
+        echarts.registerMap('cs', chinaJson);
+        var chart = echarts.init(document.getElementById('mp'));
+        chart.setOption(option);
+    })
+</script>
+</body>
+</html>

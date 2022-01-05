@@ -1,0 +1,101 @@
+<template>
+	<div id="">
+		<!-- <el-dialog
+:title="!dataForm.id ? '新增' : '修改'"
+:close-on-click-modal="false"
+:visible.sync="visible"> -->
+		<!--<el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
+			<el-form-item label="活动名称" prop="name">-->
+				<el-select v-model="value" placeholder="请选择活动名称">
+					<el-option v-for="(item,index) in options" :key="index" :label="item.label" :value="item.value">
+					</el-option>
+				</el-select>
+			<!--</el-form-item>
+		</el-form>-->
+		<span slot="footer" class="dialog-footer">
+  <el-button @click="visible = false">取消</el-button>
+  <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
+</span>
+		<!-- </el-dialog> -->
+	</div>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				dataForm: {
+					name: '',
+					activeId: '',
+					id: 0
+				},
+				options: [{
+					value: '选项1',
+					label: '黄金糕'
+				}, {
+					value: '选项2',
+					label: '双皮奶'
+				}, {
+					value: '选项3',
+					label: '蚵仔煎'
+				}, {
+					value: '选项4',
+					label: '龙须面'
+				}, {
+					value: '选项5',
+					label: '北京烤鸭'
+				}],
+				value: '',
+				dataRule: {
+					name: [{
+							required: true,
+							message: '选项不能为空',
+							trigger: 'change'
+						} //判空
+					]
+				}
+			}
+		},
+		created() {
+			// this.getActivityList()//初始化时调用
+		},
+//		method: {
+//			//查询所有的活动
+//			getActivityList() {
+//				this.options = [] //清空上一次存储的数据
+//				let me = this;
+//				this.$http({
+//					url: this.$http.adornUrl(`/`),
+//					method: 'get'
+//				}).then(res => {
+//					me.options = res.data.tableActiveEntities
+//				})
+//			},
+//			//页面点击修改或者新增的时候调用(新增id=null，修改id带的是选中的id)
+//			init(id) {
+//				this.dataForm.id = id || 0
+//				this.visible = true
+//				this.$nextTick(() => {
+//					this.$refs['dataForm'].resetFields()
+//					if(this.dataForm.id) {
+//						this.$http({
+//							url: this.$http.adornUrl(`/active/tableslideshow/info/${this.dataForm.id}`),
+//							method: 'get',
+//							data: this.$http.adornParams({ //传给后台的数据
+//								'activeId': this.value
+//							})
+//						}).then(({
+//							data
+//						}) => {
+//							if(data && data.code === 0) {
+//								this.value = data.tableSlideshow.tableActiveEntity.id
+//							}
+//						})
+//					}
+//				})
+//			},
+//		}
+	}
+
+	<style>
+</style>

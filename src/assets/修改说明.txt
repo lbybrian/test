@@ -1,0 +1,26 @@
+ol/Object.js
+搜“修改前、修改后”
+
+ol\View.js
+1105-1114中if和else if内的“var”改为“let”
+
+ol\color.js
+88行cache.hasOwnProperty(s)改为Object.prototype.hasOwnProperty.call(cache,s)	同Object文件修改
+
+ol\control\ScaleLine.js
+***************************************************************************************************
+package.json文件
+"parserOptions": {
+      "parser": "babel-eslint"
+    },
+改为
+"parserOptions": {
+      "parser": "babel-eslint",
+      "checkLoops": false     //默认为 true。设置该选项为 false 允许在循环中使用常量表达式。
+    },
+***************************************************************************************************
+ol\dom.js
+89行for (var i = 0; true; ++i) 改为 for (var i= 0;true;++i) 
+ 
+
+
